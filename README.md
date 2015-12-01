@@ -29,3 +29,18 @@ Field #2:
 where the numbers in the field indicate the number of mines in the 8 field vicinity.
 
 It doesn't check for malformed input. Trying to code in a Perl6ish way.
+
+## Usage
+
+I separated the functions in the sub sweep and the MAIN body. The MAIN sub process the input, sends to the sweep sub that does the heavy lifting then handles the output. So you can run the MineSweeper.pm6 file as a script as:
+
+```
+perl6 MineSweeper.pm6 < testfile.txt
+```
+
+or import the module and call the sweep sub with the minefield as an array of strings:
+
+```
+import MineSweeper;
+sweep(["..","*."]);
+```
