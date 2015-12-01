@@ -1,5 +1,5 @@
 # MineSweeper
-An exercise from the Programming Chalenges book in Perl 6
+An exercise from the Programming Challenges 2002 book in Perl 6
 
 It takes input from the standard input in the format:
 
