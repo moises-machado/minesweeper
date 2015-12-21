@@ -2,7 +2,7 @@ use v6;
 
 module MineSweeper {
 
-	sub sweep(@minefield, $rows, $cols) is export {
+	sub sweep(@minefield, $rows = @minefield.elems, $cols = @minefield[0].chars) is export {
 		my @padded = [0 xx $cols+2] xx $rows+2;
 		@padded[1..$rows;1..$cols] = @minefield.map: |*.trans('*.' => '10').comb;
 
