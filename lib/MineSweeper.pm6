@@ -2,7 +2,7 @@ use v6;
 
 module MineSweeper {
 
-	sub sweep(@minefield, $rows = @minefield.elems, $cols = @minefield[0].chars) is export {
+	sub sweep(@minefield, Int $rows = @minefield.elems, Int $cols = @minefield[0].chars) is export {
 		my @padded = [0 xx $cols+2] xx $rows+2;
 		@padded[1..$rows;1..$cols] = flat @minefield.map: *.trans('*.' => '10').comb;
 
@@ -24,11 +24,16 @@ sub MAIN {
 
 	my $field = 0;
 	loop {
-		my ($rows, $cols) = get().split(" ");
-		exit if $rows == "0";
+		my ($rows, $cols) = get().split(" ").map: +*;
+		die "$rows and $cols must be >= 0" if $rows < 0 || $cols < 0;
+		exit if $rows == 0 || $cols == 0;
+
+		my @minefield = lines()[^$rows];
+		die "Must have at least $rows lines in the field" unless @minefield.elems == $rows;
+		die "All lines must be $cols in length" unless [&&] @minefield.map: *.chars == $cols;
 
 		$field++;
 		say "Field #$field:";
-		say sweep(lines()[^$rows],$rows, $cols).join("\n"), "\n";
+		say sweep(@minefield,$rows, $cols).join("\n"), "\n";
 	}
 }
