@@ -30,7 +30,7 @@ sub MAIN {
 
 		my @minefield = lines()[^$rows];
 		die "Must have at least $rows lines in the field" unless @minefield.elems == $rows;
-		die "All lines must be $cols in length" unless [&&] @minefield.map: *.chars == $cols;
+		die "$cols '*' or '.' as lines" unless [&&] @minefield.map: * ~~ /^ <[*.]> **{$cols} $/;
 
 		$field++;
 		say "Field #$field:";
