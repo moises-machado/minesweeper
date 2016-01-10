@@ -28,7 +28,7 @@ Field #2:
 
 where the numbers in the field indicate the number of mines in the 8 field vicinity.
 
-It doesn't check for malformed input. Trying to code in a Perl6ish way.
+It check for malformed input. Trying to code in a Perl6ish way.
 
 ## Usage
 
