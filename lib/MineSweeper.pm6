@@ -14,7 +14,7 @@ module MineSweeper {
 				@hints[$i][$j] = [+] @padded[$i..$i+2;$j..$j+2]; # Sums number of mines around the cell and $i..$i+2 for padding
 			}
 		}
-		@hints.map: *.join(''); # Revert to array of strings instead of a matrix
+		@hints>>.join(''); # Revert to array of strings instead of a matrix
 	}
 
 }
